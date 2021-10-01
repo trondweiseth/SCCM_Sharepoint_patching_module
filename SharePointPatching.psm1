@@ -256,6 +256,7 @@ Function SP-CreateCheckpoints {
         if ($validate -imatch 'y') {
             $response = Read-Host -Prompt "Description "
             [string]$newspchkpointdescription = $response.Trim('"')
+            [string]$newspchkpointdescription = $newspchkpointdescription.Trim("'")
             $savedescription = Read-Host -Prompt "Do you want to save the description? (y/n) (Default n)" -ErrorAction SilentlyContinue
             if ($savedescription -imatch 'y') {
                 $currentdescription = ((Get-Content $scriptlocation | Where-Object { $_ -match "spchkpointdescription" }).Split('{')[1]).Trim("}")
@@ -657,6 +658,7 @@ Function SP-InstallationStatus {
             if ($validate -imatch 'y') {
                 $response = Read-Host -Prompt "AppName "
                 $newInstallStatusAppName = $response.Trim('"')
+                $newInstallStatusAppName = $response.Trim("'")
                 $saveAppName = Read-Host -Prompt "Do you want to save AppName? (y/n) (Default n)" -ErrorAction SilentlyContinue
                 if ($saveAppName -imatch 'y') {
                     $currentAppName = ((Get-Content $scriptlocation | Where-Object { $_ -match "InstallStatusAppName" }).Split('{')[1]).Trim("}")
@@ -668,6 +670,8 @@ Function SP-InstallationStatus {
             $InstallStatusAppName = $AppName
             $saveAppName = Read-Host -Prompt "Do you want to save AppName? (y/n) (Default n)" -ErrorAction SilentlyContinue
             if ($saveAppName -imatch 'y') {
+                $InstallStatusAppName = $response.Trim('"')
+                $InstallStatusAppName = $response.Trim("'")
                 $currentAppName = ((Get-Content $scriptlocation | Where-Object { $_ -imatch "InstallStatusAppName" }).Split('{')[1]).Trim("}")
                 (Get-Content $scriptlocation).Replace("$currentAppName", "$InstallStatusAppName") | Set-Content -Path $scriptlocation
             }
