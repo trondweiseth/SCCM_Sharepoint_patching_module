@@ -61,7 +61,24 @@ Any function that is only informational are not validated before running.
     SP-VMStatus
 
 .NOTES
-Author: Trond Weiseth 
+Author: Trond Weiseth
+
+You need to change Site configuration variable $SiteCode and $ProviderMachineName with  your sccm server and site number.
+Alternatively, you can get the first part of the function with the code provided by your SCCM.
+    1) Open SCCM.
+    2) Click the blue dropdown tab in top left corner.
+    3) Click 'Connect via PowerShell ISE.
+    4) Copy and replace the same code inside SP-InstallationStatus function.
+
+SCCM script to detect application:
+
+        $installed=$null
+        $FileHash= Get-FileHash -Path 'C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.dll' -ErrorAction SilentlyContinue
+        $version = (Get-Item -Path 'C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\ISAPI\Microsoft.SharePoint.dll').Versioninfo.FileVersion
+        if(($version -eq '19.0.1234.1234' -and $FileHash.Hash -eq "B502F8BB38475869CE4F4A95CDB689FB6411B78339D49586746F7B7E48573645")){
+                 $installed=1
+          }
+        Write-Host $installed
 #>
 
 $scriptlocation = $MyInvocation.MyCommand.Path
