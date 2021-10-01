@@ -82,7 +82,7 @@ Function SP-Servers() {
     }
 
     if (! $Enviroment) { helpmsg; break }
-    $serverlistfolder = "$HOME\Documents\AIsharepointhosts"
+    $serverlistfolder = "$HOME\Documents\SharepointHosts"
     if ($EditFile) { notepad.exe $serverlistfolder\$Enviroment.txt | Out-Null }
     $Global:servers = Get-Content $serverlistfolder\$Enviroment.txt
     Write-Host -ForegroundColor Yellow "Servers are set to:"
