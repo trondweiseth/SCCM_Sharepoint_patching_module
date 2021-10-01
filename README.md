@@ -14,11 +14,11 @@ Any function that is only informational are not validated before running.
 
 # Installation
 
-    1) Download this project in .zip
-    2) Extract and run Launch.ps1
-    The module should now be installed and readuy for use. Open Powershell and type Get-Command -Module Sharepointpatching to validate.
-    
-    You have to change the server lists to your enviroment and the main script for it to connect with your SCCM server. Read the notes in the script.
+  1) Download this project in .zip
+  2) Extract and run Launch.ps1
+  3) 
+  The module should now be installed and readuy for use. Open Powershell and type Get-Command -Module Sharepointpatching to validate.
+  You have to change the server lists to your enviroment and the main script for it to connect with your SCCM server. Read the notes in the script.
 
 
 # Commands
