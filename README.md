@@ -1,4 +1,4 @@
-# SCCM patching module
+# SCCM SharePoint patching module
 Powershell module for sccm and software center patching
 
 This module is a toolset created to aid in patching through SCCM with Powershell.
