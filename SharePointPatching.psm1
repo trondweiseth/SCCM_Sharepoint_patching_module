@@ -39,7 +39,7 @@ Any function that is only informational are not validated before running.
     SP-RunSCCMClientAction [[-ClientAction] {MachinePolicy | DiscoveryData | ComplianceEvaluation | AppDeployment | HardwareInventory | UpdateDeployment | UpdateScan | SoftwareInventory}]
 .EXAMPLE
     SP-Servers
-    SP-Servers [[-Global:Enviroment] {YT01 | AT05 | TT02 | TUT01 | TUL | PROD}] [-EditFile]
+    SP-Servers [[-Global:Enviroment] {ENV01 | ENV02 | TEST | PROD}] [-EditFile]
 .EXAMPLE
     SP-StartServers
 .EXAMPLE
@@ -89,13 +89,13 @@ Function SP-Servers() {
     [CmdletBinding()]
     param
     (
-        [ValidateSet('YT01', 'AT05', 'TT02', 'TUT01', 'TUL', 'PROD')]
+        [ValidateSet('ENV01', 'ENV02', 'TEST', 'PROD')]
         [string]$Global:Enviroment,
         [switch]$EditFile
     )
     
     function helpmsg {
-        Write-Host -ForegroundColor Yellow "SYNTAX: SP-Servers [{YT01 | AT05 | TT02 | TUT01 | TUL | PROD}] [-EditFile]"
+        Write-Host -ForegroundColor Yellow "SYNTAX: SP-Servers [{ENV01 | ENV02 | TEST | PROD}] [-EditFile]"
     }
 
     if (! $Enviroment) { helpmsg; break }
@@ -125,7 +125,7 @@ Function validation() {
 Function errormsg {
 
     if ($null -eq $Servers) {
-        Write-Warning "No servers are selected. Run SP-Servers [{YT01 | AT05 | TT02 | TUT01 | TUL | PROD}]"
+        Write-Warning "No servers are selected. Run SP-Servers [{ENV01 | ENV02 | TEST | PROD}]"
         break
     }
 }
